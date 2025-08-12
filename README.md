@@ -3,12 +3,14 @@
 Allow users to monitor APIs by indicating how long they've been in a `stale` state
 
 See bellow image for example:
+
 <img width="1662" height="1014" alt="image" src="https://github.com/user-attachments/assets/6ac40f8e-1132-4094-9131-4dfc57df9ee2" />
 
 ---
 ## Configuration
 The App is fairly straight forward, everything is pull from the `.env` variable `SERVICE_API`.
-`SERVICE_API` needs to be a JSON formatted string as this example bellow.
+
+`SERVICE_API` needs to be a JSON formatted string see example bellow.
 
 ```JSON
 {
@@ -20,7 +22,9 @@ The App is fairly straight forward, everything is pull from the `.env` variable 
 }
 ```
 
-The Application will dynamically generate the dashboard as long as you follow the JSON formating above, so if you want Mornitore 10 app the application will be able to do it.
+The Application will dynamically generate the dashboard as long as you follow the JSON formating above, 
+
+so if you want Mornitore 10 app the application will be able to do it.
 
 ---
 ## Running The Application
@@ -33,4 +37,6 @@ symfony server:start
 Once service is running you will be able to got to the index page to see the Dashboard:
 `/index` or if you want a see `health-data` simply go to `/health-data`
 
+>[!note]
+> The app will ping your services every 10min. i.e. the dashboard refresh every 10min with updated info
 ---
