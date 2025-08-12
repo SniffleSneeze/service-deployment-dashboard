@@ -1,6 +1,6 @@
 # service-deployment-dashboard
 
-Allow user to to monitore given API by flaging how long has they are in  `Stale` state.
+Allow users to monitor APIs by indicating how long they've been in a `stale` state
 
 See bellow image for example:
 <img width="1662" height="1014" alt="image" src="https://github.com/user-attachments/assets/6ac40f8e-1132-4094-9131-4dfc57df9ee2" />
