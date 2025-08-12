@@ -6,7 +6,6 @@ See bellow image for example:
 
 <img width="1662" height="1014" alt="image" src="https://github.com/user-attachments/assets/6ac40f8e-1132-4094-9131-4dfc57df9ee2" />
 
----
 ## Configuration
 The App is fairly straight forward, everything is pull from the `.env` variable `SERVICE_API`.
 
@@ -26,7 +25,6 @@ The Application will dynamically generate the dashboard as long as you follow th
 
 so if you want Mornitore 10 app the application will be able to do it.
 
----
 ## Running The Application
 Simply pull the app and once you are in the `root` folder you can run:
 
@@ -39,4 +37,8 @@ Once service is running you will be able to got to the index page to see the Das
 
 >[!note]
 > The app will ping your services every 10min. i.e. the dashboard refresh every 10min with updated info
----
+
+## Roadmap
+- [x] Health check dashboard
+- [ ] Give ability to change ping time from `.env` (coming soon 🚀)
+- [ ] Sort Service in the dashboard show the most `stale` at the top (coming soon 🚀)
