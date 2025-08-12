@@ -17,6 +17,11 @@ The App is fairly straight forward, everything is pull from the `.env` variable 
         "Staging": "YOUR_APP_STAGING_URL/healthcheck",
         "Pre-Production": "YOUR_APP_PRE_PRODUCTION_URL/healthcheck",
         "Production": "YOUR_APP_PRODUCTION_URL/healthcheck"
+    },
+    "OTHER_SERVICE_NAME": {
+        "Staging": "YOUR_APP_STAGING_URL/healthcheck",
+        "Pre-Production": "YOUR_APP_PRE_PRODUCTION_URL/healthcheck",
+        "Production": "YOUR_APP_PRODUCTION_URL/healthcheck"
     }
 }
 ```
