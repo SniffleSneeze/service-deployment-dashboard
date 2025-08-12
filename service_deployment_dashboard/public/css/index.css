@@ -1,0 +1,76 @@
+:root {
+    /* Traffic light palette (light theme) */
+    --color-success: #a8e6a1; /* light green */
+    --color-warning: #fff3b0; /* soft yellow */
+    --color-error:   #ffb3b3; /* light red */
+
+    /* main card colour */
+    --color-bg: #ffffff;
+}wh
+
+.title {
+    text-align: center;
+}
+
+.success {
+    background-color: var(--color-success);
+    /*color: var(--color-success-dark);*/
+}
+
+.warning {
+    background-color: var(--color-warning);
+    /*color: var(--color-warning-dark);*/
+}
+
+.error {
+    background-color: var(--color-error);
+    /*color: var(--color-error-dark);*/
+}
+
+.arrow {
+    font-size: 2rem;
+    width: 1rem;
+    margin: auto auto 0.2rem;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center ;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 90%;
+    padding: 1rem;
+    margin: auto;
+    overflow-wrap: break-word;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.stale-card {
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 50%;
+    padding: 1rem;
+    margin: auto;
+    overflow-wrap: break-word;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.service-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin: 1rem;
+    width: auto;
+    box-shadow: 0 5px 6px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
