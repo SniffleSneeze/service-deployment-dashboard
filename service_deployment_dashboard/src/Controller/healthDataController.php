@@ -49,6 +49,8 @@ class healthDataController extends AbstractController
             $servicesName[] = $serviceApi;
 
             foreach ($service as $api => $url) {
+                // add extra execution time to avoid PHP time out
+                set_time_limit(60*5);
                 $urlResponse[$serviceApi][$api] = json_decode($this->fetchHealthCheck($url)->getContent());
             }
         }
@@ -66,6 +68,11 @@ class healthDataController extends AbstractController
                 'productionDiff' => $preProdVsProd,
             ];
         }
+
+        // Sort by productionDiff descending
+        uasort($urlResponse, function ($a, $b) {
+            return $b['info']['productionDiff'] <=> $a['info']['productionDiff'];
+        });
 
         return $this->json($urlResponse);
     }
