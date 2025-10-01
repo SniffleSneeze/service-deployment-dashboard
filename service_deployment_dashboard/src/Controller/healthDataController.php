@@ -49,23 +49,44 @@ class healthDataController extends AbstractController
             $servicesName[] = $serviceApi;
 
             foreach ($service as $api => $url) {
+                // add extra execution time to avoid PHP time out
+                set_time_limit(60*5);
                 $urlResponse[$serviceApi][$api] = json_decode($this->fetchHealthCheck($url)->getContent());
             }
         }
 
         for ($i = 0; $i < count($servicesName); $i++) {
-            $staging = new DateTime($urlResponse[$servicesName[$i]]['Staging']->lastCommitDate);
-            $preProduction = new DateTime($urlResponse[$servicesName[$i]]['Pre-Production']->lastCommitDate);
-            $production = new DateTime($urlResponse[$servicesName[$i]]['Production']->lastCommitDate);
 
-            $stageVsPrProd = $staging->diff($preProduction)->days;
-            $preProdVsProd = $preProduction->diff($production)->days;
+            $now = new DateTime();
+            $stagingCommit = new DateTime($urlResponse[$servicesName[$i]]['Staging']->lastCommitDate);
+            $stagingVersion = $urlResponse[$servicesName[$i]]['Staging']->version;
+
+            $preProductionCommit = new DateTime($urlResponse[$servicesName[$i]]['Pre-Production']->lastCommitDate);
+            $preProductionVersion = $urlResponse[$servicesName[$i]]['Pre-Production']->version;
+
+            $productionCommit = new DateTime($urlResponse[$servicesName[$i]]['Production']->lastCommitDate);
+            $productionVersion = $urlResponse[$servicesName[$i]]['Production']->version;
+
+            $stageVsPrProd = 0;
+            if(substr($stagingVersion, 0,6) !== substr($preProductionVersion, 0,6)){
+                $stageVsPrProd = $preProductionCommit->diff($now)->days;
+            }
+
+            $preProdVsProd = 0;
+            if(substr($preProductionVersion, 0,6) !== substr($productionVersion, 0,6)){
+                $preProdVsProd = $productionCommit->diff($now)->days;
+            }
 
             $urlResponse[$servicesName[$i]]['info'] = [
                 'preProductionDiff' => $stageVsPrProd,
                 'productionDiff' => $preProdVsProd,
             ];
         }
+
+        // Sort by productionDiff descending
+        uasort($urlResponse, function ($a, $b) {
+            return $b['info']['productionDiff'] <=> $a['info']['productionDiff'];
+        });
 
         return $this->json($urlResponse);
     }
