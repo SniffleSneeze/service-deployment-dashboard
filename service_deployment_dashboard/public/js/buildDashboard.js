@@ -110,7 +110,7 @@ function createStaleCard(serviceContainer, serviceName, enviName, infoValue) {
         infoCard.textContent =
             infoValue.preProductionDiff === 0 ?
                 "Up to Date" :
-                `${infoValue.preProductionDiff} days stale with Staging}`;
+                `${infoValue.preProductionDiff} days stale with Staging`;
         infoCard.id = serviceName + "-stagingDiff"
         infoCard.dataset.value = infoValue.preProductionDiff;
 
